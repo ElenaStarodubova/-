@@ -134,16 +134,17 @@ public class Main
 
 
         Scanner in = new Scanner(System.in);
-        System.out.print("Input a number: ");
-        //int ddf = next();
+        System.out.print("Введите выражение: ");
+
         String input = in.nextLine();
 
-        System.out.print("Input age: ");
-        System.out.printf(input);
+       // System.out.print("Введено выражение: ");
+       // System.out.printf(input);
+
         String result = calc(input);
 
-        System.out.print("ITOG: ");
+        System.out.print("Результат расчета: ");
         System.out.printf(result);
-        // in.close();
+
     }
 }
