@@ -1,12 +1,6 @@
-/******************************************************************************
-
-                            Online Java Compiler.
-                Code, Compile, Run and Debug java program online.
-Write your code in this editor and press "Run" button to execute it.
-
-*******************************************************************************/
 import java.util.HashMap;
 import java.util.Arrays;
+import java.util.Scanner;
 
 
 class Calculator {
@@ -14,9 +8,9 @@ class Calculator {
     static int first_number;
     static int second_number;
     static String operation;
-    
+
     static HashMap<String, Integer> map = new HashMap<String, Integer>();
-    
+
     static {
         map.put("I",    1);
         map.put("II",   2);
@@ -29,8 +23,8 @@ class Calculator {
         map.put("IX",   9);
         map.put("X",    10);
     }
-    
-    static String[] roman = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"}; 
+
+    static String[] roman = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
 
     public final static Integer toArabic(String roman) {
         // method converted roman number to arabic
@@ -38,10 +32,10 @@ class Calculator {
         if (arabic == null) {
             throw new IllegalArgumentException();
         }
-        
+
         return arabic;
     }
-    
+
     public final static String toRoman(Integer arabic) {
         // method converted arabic number to roman
         if (arabic < 0 || arabic > 10) {
@@ -49,27 +43,27 @@ class Calculator {
         }
         return roman[arabic - 1];
     }
-    
+
     public static Integer calculate(Integer a, Integer b, String operation) {
         Integer result;
 
         if (operation.equals("+")) {
-            return a + b; 
+            return a + b;
         } else if (operation.equals("-")) {
             return a - b;
         } else if (operation.equals("*")) {
             return a * b;
         } else if (operation.equals("/")) {
             return a / b;
-        } 
+        }
         throw new IllegalArgumentException();
     }
-    
-    
+
+
     public static String run(String input) {
         input = input.replaceAll(" ", "");
         String[] splitted = input.split("(?<=[-+*/])|(?=[-+*/])");
-        
+
         if (splitted.length != 3) {
             throw new IllegalArgumentException();
         }
@@ -78,10 +72,10 @@ class Calculator {
             is_roman = true;
         } else {
             try {
-               first_number = Integer.parseInt(splitted[0]);
+                first_number = Integer.parseInt(splitted[0]);
             }
             catch (NumberFormatException e) {
-               throw new IllegalArgumentException();
+                throw new IllegalArgumentException();
             }
         }
         if (splitted[2].contains("I") || splitted[2].contains("V") || splitted[2].contains("X")) {
@@ -93,18 +87,18 @@ class Calculator {
             throw new IllegalArgumentException();
         } else {
             try {
-               second_number = Integer.parseInt(splitted[2]);
+                second_number = Integer.parseInt(splitted[2]);
             }
             catch (NumberFormatException e) {
-               throw new IllegalArgumentException();
+                throw new IllegalArgumentException();
             }
-            
+
         }
-        
+
         if (first_number < 1 || first_number > 10 || second_number < 1 || second_number > 10) {
             throw new IllegalArgumentException();
         }
-        
+
         operation = splitted[1];
 
         Integer result = calculate(first_number, second_number, operation);
@@ -123,16 +117,33 @@ class Calculator {
 
 public class Main
 {
-	public static String calc(String input) {
-	    Calculator calculator = new Calculator();
-	    String result = calculator.run(input);
-		
-		return result;
-	}
-	
-	public static void main(String args[]) {
-	    String input = System.console().readLine();
+    public static String calc(String input) {
+        Calculator calculator = new Calculator();
+        String result = calculator.run(input);
+
+        return result;
+    }
+    ////////////
+//	public static void main(String args[]) {
+    // String input = System.console().readLine();
+    // String result = calc(input);
+    // System.out.println(result);
+//	}
+    /////////////
+    public static void main(String args[]) {
+
+
+        Scanner in = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        //int ddf = next();
+        String input = in.nextLine();
+
+        System.out.print("Input age: ");
+        System.out.printf(input);
         String result = calc(input);
-	    System.out.println(result);
-	}
+
+        System.out.print("ITOG: ");
+        System.out.printf(result);
+        // in.close();
+    }
 }
