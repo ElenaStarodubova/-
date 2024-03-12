@@ -22,9 +22,21 @@ class Calculator {
         map.put("VIII", 8);
         map.put("IX",   9);
         map.put("X",    10);
+
     }
 
-    static String[] roman = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
+    static String[] roman = {"I", "II", "III", "IV", "V","VI", "VII", "VIII", "IX", "X",
+            "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
+            "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX",
+            "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XX",
+            "XLI", "XLII", "XLIII", "XLIV", "XLV", "XLVI", "XLVII", "XLVIII", "XLIX", "L",
+            "LI", "LII", "LIII", "LIV", "LV", "LVI", "LVII", "L", "LIX", "LX",
+            "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII", "LXVIII", "LXIX", "LXX",
+            "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII", "LXXVIII", "LXXIX", "XX",
+            "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC",
+            "XCI", "XCII", "XCIII", "XCIV", "XCV","XCVI", "XCVII", "XCVIII", "XCIX", "C"
+
+    };
 
     public final static Integer toArabic(String roman) {
         // method converted roman number to arabic
@@ -38,7 +50,7 @@ class Calculator {
 
     public final static String toRoman(Integer arabic) {
         // method converted arabic number to roman
-        if (arabic < 0 || arabic > 10) {
+        if (arabic < 0 || arabic > 100) {
             throw new IllegalArgumentException();
         }
         return roman[arabic - 1];
@@ -67,7 +79,7 @@ class Calculator {
         if (splitted.length != 3) {
             throw new IllegalArgumentException();
         }
-        if (splitted[0].contains("I") || splitted[0].contains("V") || splitted[0].contains("X")) {
+        if (splitted[0].contains("I") || splitted[0].contains("V") || splitted[0].contains("X") || splitted[0].contains("L") || splitted[0].contains("C")) {
             first_number = toArabic(splitted[0]);
             is_roman = true;
         } else {
@@ -104,7 +116,8 @@ class Calculator {
         Integer result = calculate(first_number, second_number, operation);
 
         if (is_roman) {
-            if (result < 1 || result > 10) {
+           // if (result < 1 || result > 10) {
+           if (result < 1) {
                 throw new IllegalArgumentException();
             }
             return toRoman(result);
