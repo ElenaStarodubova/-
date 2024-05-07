@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//07.05.24
 public class Main
 {
     public static void main(String[] args) {
@@ -28,51 +28,34 @@ class Calculator {
 
 
         if (arrSplit[2].equals("+") | arrSplit[2].equals("-")) {
-            Class1 calc_plusminus = new Class1();
-            calc_plusminus.main(arrSplit);
+            if (arrSplit[2].equals("+")) {
+                if (arrSplit[1].length() > 10|arrSplit[3].length() > 10){
+                    System.out.println( "Вы ввели некорректный пример, попробуйте еще раз");
+                    throw new IllegalArgumentException();
+                } else {
+                    String arrSplitrez = arrSplit[1].concat(arrSplit[3]);
+                    System.out.print("Результат: ");
+                    System.out.println("\""+arrSplitrez+"\"");
+
+                }
+            }
+            if (arrSplit[2].equals("-"))  {
+                if (arrSplit[1].length() > 10|arrSplit[3].length() > 10){
+                    System.out.println( "Вы ввели некорректный пример, попробуйте еще раз");
+                    throw new IllegalArgumentException();
+                } else {
+                    String arrSplitrez = arrSplit[1].replace(arrSplit[3], "");
+                    System.out.print("Результат: ");
+                    System.out.println("\""+arrSplitrez+"\"");
+
+                }
+            }
         }
 
         //////////////////////////////////////////////////////////////////////////
         String arrSplit1 = input.replaceAll("\"", "");
         String[] arrSplit2 = arrSplit1.split("(?<=[\\-+/*])|(?=[\\-+/*])");
-        if (arrSplit2[1].equals("*") | arrSplit2[1].equals("/")) {
-            Class2 calc_proizchastn = new Class2();
-            calc_proizchastn.main(arrSplit2);
-        }
-    }
-}
-
-class Class1 {
-
-    public static void main(String[] arrSplit) {
-        if (arrSplit[2].equals("+")) {
-            if (arrSplit[1].length() > 10|arrSplit[3].length() > 10){
-                System.out.println( "Вы ввели некорректный пример, попробуйте еще раз");
-                throw new IllegalArgumentException();
-            } else {
-                String arrSplitrez = arrSplit[1].concat(arrSplit[3]);
-                System.out.print("Результат: ");
-                System.out.println("\""+arrSplitrez+"\"");
-
-            }
-        }
-        if (arrSplit[2].equals("-"))  {
-            if (arrSplit[1].length() > 10|arrSplit[3].length() > 10){
-                System.out.println( "Вы ввели некорректный пример, попробуйте еще раз");
-                throw new IllegalArgumentException();
-            } else {
-                String arrSplitrez = arrSplit[1].replace(arrSplit[3], "");
-                System.out.print("Результат: ");
-                System.out.println("\""+arrSplitrez+"\"");
-
-            }
-        }
-    }
-}
-// ///////////////////////////////////////////////////////////////////
-class Class2 {
-    public static void main(String[] arrSplit2) {
-        if(arrSplit2[1].equals("/")) {
+        if (arrSplit2[1].equals("*") | arrSplit2[1].equals("/")) if(arrSplit2[1].equals("/")) {
             arrSplit2[0] = arrSplit2[0].replaceAll("[^a-zA-Z0-9]", "");
 
         }
